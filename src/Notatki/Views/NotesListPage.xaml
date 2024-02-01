@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<views:BaseContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       xmlns:views="clr-namespace:Notatki.Views"
+                       xmlns:viewmodels="clr-namespace:Notatki.ViewModels"
+                       x:Class="Notatki.Views.NotesListPage"
+                       Title="Notes">
+
+    <views:BaseContentPage.BindingContext>
+        
+        <viewmodels:NotesListPageViewModel />
+        
+    </views:BaseContentPage.BindingContext>
+
+    <Grid>
+
+        <CollectionView ItemsSource="{Binding Notes}">
+
+            <CollectionView.ItemsLayout>
+
+                <LinearItemsLayout Orientation="Vertical"
+                                   ItemSpacing="8"/>
+
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+
+                <DataTemplate>
+
+                    <Frame HasShadow="False"
+                           Padding="8, 16"
+                           CornerRadius="3"
+                           Margin="16, 0">
+
+                        <Label Text="My note"/>
+
+                    </Frame>
+
+                </DataTemplate>
+
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+        <ImageButton HeightRequest="64"
+                     WidthRequest="64"
+                     CornerRadius="32"
+                     Source="ic_add"
+                     HorizontalOptions="End"
+                     VerticalOptions="End"
+                     Margin="16"
+                     Padding="32"
+                     BackgroundColor="{DynamicResource Primary}"
+                     Command="{Binding AddNoteTapCommand}"/>
+
+    </Grid>
+    
+</views:BaseContentPage>
